@@ -8,7 +8,7 @@ import './StepsLayout.css';
 export const StepsLayout = ({ state, send }) => {
   const renderContent = () => {
     if (state.matches('inicial')) return <Welcome send={send} />
-    if (state.matches('search')) return <Search send={send} />
+    if (state.matches('search')) return <Search send={send} state={state} />
     if (state.matches('tickets')) return <Tickets send={send} context={state.context}/>
     if (state.matches('passangers')) return <Passengers send={send} state={state} />
     
