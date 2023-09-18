@@ -2,7 +2,7 @@ import React from 'react';
 import { useMachine } from '@xstate/react';
 import { Nav } from '../Components/Nav';
 import { StepsLayout } from './StepsLayout';
-import bookingMachine from '../Machines/bookingMachine';
+import {bookingMachine} from '../Machines/bookingMachine';
 import './BaseLayout.css';
 
 export const BaseLayout = () => {
@@ -14,8 +14,8 @@ export const BaseLayout = () => {
   console.log('can', state.can('FINISH'));
   return (
     <div className='BaseLayout'>
-      <Nav />
-      <StepsLayout />
+      <Nav state={state} send={send}/>
+      <StepsLayout state={state} send={send}/>
     </div>
   );
 }

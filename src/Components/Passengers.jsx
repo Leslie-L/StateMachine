@@ -7,15 +7,21 @@ export const Passengers = ({ state, send }) => {
   const onChangeInput = (e) => {
     changeValue(e.target.value);
   }
-
+  const goToTicket=()=>{
+    send('DONE');
+  }
   const submit = (e) => {
     e.preventDefault();
+    send('ADD',{newPassanger:value})
     changeValue('');
   }
-
+  const {passangers}=state.context;
   return (
     <form onSubmit={submit} className='Passengers'>
       <p className='Passengers-title title'>Agrega a las personas que van a volar ✈️</p>
+      {
+        passangers.map((person,idex)=><p className='text' key={`person-${idex}`}>{person }</p>)
+      }
       <input 
         id="name" 
         name="name" 
@@ -35,6 +41,7 @@ export const Passengers = ({ state, send }) => {
         <button
           className='Passenger-pay button'
           type="button"
+          onClick={goToTicket}
         >
           Ver mi ticket
         </button>
